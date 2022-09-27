@@ -1,5 +1,9 @@
 Inspired by projects like [jsonresume.org](https://jsonresume.org). Why is making a decent looking resume so difficult? One wrong move in Word and your whole document is garbled. If you want anything unique, you have to learn some obscure publishing software. Editing your resume should be as easy as editing a text document. You shouldn't have to fuss over the layout every time you add something.
 
+Example resume generated with this tool:
+
+![Example Resume](example.png)
+
 # Why not jsonresume?
 
 1) jsonresume is old. Lots of the tooling associated with it is outdated.
