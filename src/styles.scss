@@ -1,0 +1,159 @@
+$margin: .25 * 72pt;
+$pageWidth: 8.5 * 72pt;
+$pageHeight: 11 * 72pt;
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Avenir';
+    font-size: .8em;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+#resume {
+    margin: 20px auto;
+    width: $pageWidth;
+}
+
+.header {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding-bottom: 20px;
+    border-bottom: 1px solid;
+    h1 {
+        margin: 0px;
+    }
+    p {
+        color: gray;
+        margin-top: -5px;
+    }
+    .vertical-divider {
+        margin: 5px 20px;
+        height: 60px;
+        width: 1px;
+        background: black;
+    }
+    .contact-info {
+        margin-left: 10px;
+        div:not(:first-child) {
+            margin-top: 10px;
+        }
+        .icon {
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            color: gray;
+            vertical-align: middle;
+        }
+        .text {
+            color: black;
+            margin-left: 10px;
+        }
+    }
+}
+
+.section-header {
+    width: 100%;
+    margin: 0;
+    h2 {
+        margin: 15px 0px 10px 0px;
+    }
+    h2:not(:first-child) {
+        margin: 10px 0px;
+    }
+}
+
+.sub-title {
+    font-weight: 700;
+    font-style: italic;
+}
+
+.emphasis {
+    font-style: italic;
+}
+
+.skills {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .skill {
+        margin: 0px 0px 5px 5px;
+        border-radius: 1.5em;
+        padding: 5px 10px;
+        background-color: gray;
+        color: white;
+    }
+}
+
+.project {
+    .description {
+        margin: 5px;
+    }
+}
+.project:not(:first-child) {
+    margin-top: 10px;
+}
+
+.job {
+    .job-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    ul {
+        margin: 5px 5px 0 25px;
+        padding: 0;
+    }
+}
+
+.job:first-child {
+    margin-top: 10px;
+}
+
+.school {
+    @extend .project;
+    .school-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+// Size mock-page to A4 paper size and hide offscreen (so it doesn't affect scrollbars)
+#mock-page {
+    position: absolute;
+    left: -1000px;
+    top: -1000px;
+    visibility: hidden;
+    height: $pageHeight - ($margin * 2);
+    width: $pageWidth - ($margin * 2);
+    padding: $margin;
+}
+
+.page {
+    background-color: white;
+    height: $pageHeight - ($margin * 2);
+    width: $pageWidth - ($margin * 2);
+    padding: $margin;
+    margin: 0px;
+}
+
+.section {
+    width: 100%;
+    margin: 0;
+}
+
+.page:not(:first-child) {
+    margin-top: 10pt;
+}

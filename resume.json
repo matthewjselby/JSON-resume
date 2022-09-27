@@ -1,0 +1,123 @@
+{
+  "basics": {
+    "name": "John Smith",
+    "label": "Software Engineer",
+    "picture": "",
+    "email": "john.smith@gmail.com",
+    "phone": "(123) 456-7890",
+    "website": "https://jsmith.dev",
+    "github": "https://github.com/jsmith",
+    "summary": "",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "New York",
+      "countryCode": "US",
+      "region": "NY"
+    }
+  },
+  "experience": [
+    {
+      "company": "My Startup",
+      "position": "Founder",
+      "website": "https://mystartup.com",
+      "startDate": "2018-10-02",
+      "endDate": "",
+      "summary": "",
+      "highlights": [
+        "Founder of awesome company",
+        "Raised 100M in series A funding",
+        "300M active daily users",
+        "Codebase utiling Node.js, Express, and MongoDB"
+      ]
+    },
+    {
+      "company": "Big Tech Company",
+      "position": "Software Engineer",
+      "website": "https://bigtech.com",
+      "startDate": "2015-08-01",
+      "endDate": "2018-10-01",
+      "summary": "",
+      "highlights": [
+        "Engineer for backend team utilizing Java and Ruby on Rails",
+        "Developed backend API for developer usage",
+        "Modularized and optimized existing backend code for 30% faster load times",
+        "Developed alert system for backend issues"
+      ]
+    },
+    {
+      "company": "Awesome Startup",
+      "position": "Software Engineer",
+      "website": "https://astartup.com",
+      "startDate": "2012-07-01",
+      "endDate": "2015-06-01",
+      "summary": "",
+      "highlights": [
+        "Engineer for backend analytics team utilizing Node.js and Express",
+        "Developed analytics application for visualizing performance of backend services",
+        "Identified and patched bottleneck in backend performance, reducing backend resource consumption by 15%",
+        "Developed plugin system for analytics application to allow easy monitoring of other systems"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "Top Tier Graduate University",
+      "degree": "M.S. - Software Engineering",
+      "location": "New York, NY",
+      "startDate": "2009-08-01",
+      "endDate": "2012-05-01",
+      "gpa": "4.0",
+      "description": "Masters program with a focus on verification, validation, testing, project management, security, advanced algorithms, and more. Capstone project focused on a scalable content distribution network."
+    },
+    {
+      "school": "Top Tier University",
+      "degree": "B.S. - Software Engineering",
+      "location": "New York, NY",
+      "startDate": "2005-08-01",
+      "endDate": "2009-05-01",
+      "gpa": "4.0",
+      "description": "Coursework included operating system design, obect-oriented programming, data structures, virtualization, application scaling, complex algorithms, and more."
+    }
+  ],
+  "awards": [],
+  "publications": [],
+  "skills": [
+    "Node.js",
+    "Express",
+    "NGINX",
+    "Docker",
+    "Kubernetes",
+    "React",
+    "MongoDB",
+    "SQL",
+    ".NET",
+    "Python",
+    "C#",
+    "Django",
+    "Flask",
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "*nix",
+    "Sys Admin"
+  ],
+  "projects": [
+    {
+      "name": "Cool Web Application",
+      "url": "https://github.com/jsmith/cool-web-application",
+      "status": "",
+      "description": "A web application that does really cool stuff. Written in Python using Django framework. Allows a user to enter information, then stores that information in an SQL database."
+    },
+    {
+      "name": "Cool Mobile Application",
+      "url": "https://github.com/jsmith/cool-mobile-application",
+      "status": "",
+      "description": "A mobile application that does really cool stuff. Written in Swift for iOS. Allows a user to enter information, which is synced using CoreData across devices."
+    }
+  ],
+  "certifications": [],
+  "languages": [],
+  "interests": [],
+  "references": []
+}

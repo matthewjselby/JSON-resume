@@ -1,0 +1,18 @@
+{{#each resume.experience}}
+    <div class="section">
+        {{#if @first}}
+        {{> section-header sectionTitle="Experience"}}
+        {{/if}}
+        <div class="job">
+            <div class="job-header">
+                <p><span class="sub-title">{{company}}</span> | {{position}}</p>
+                <p class="emphasis">{{prettyDate startDate}} - {{prettyDate endDate}}</p>
+            </div>
+            <ul>
+            {{#each highlights}}
+            <li>{{this}}</li>
+            {{/each}}
+            </ul>
+        </div>
+    </div>
+{{/each}}

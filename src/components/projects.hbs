@@ -1,0 +1,11 @@
+{{#each resume.projects}}
+    <div class="section">
+        {{#if @first}}
+        {{> section-header sectionTitle="Projects"}}
+        {{/if}}
+        <div class="project">
+            <p><span class="sub-title">{{name}}</span>{{#if url}} | {{prettyLink url}}{{/if}}</p>
+            <p class="description">{{description}}</p>
+        </div>
+    </div>
+{{/each}}

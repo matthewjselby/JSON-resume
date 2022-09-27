@@ -1,0 +1,10 @@
+{{#if resume.skills.length}}
+<div class="section">
+    {{> section-header sectionTitle="Skills"}}
+    <div class="skills">
+        {{#each resume.skills}}
+            <div class="skill">{{this}}</div>
+        {{/each}}
+    </div>
+</div>
+{{/if}}

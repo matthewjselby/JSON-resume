@@ -1,0 +1,21 @@
+<div class="section header">
+    <div>
+        <h1>{{resume.basics.name}}</h1>
+        <p>{{resume.basics.label}}</p>
+    </div>
+    <div class="vertical-divider"></div>
+    <div class="contact-info">
+        <div>
+            <span class="icon fa-solid fa-phone"></span>
+            <span class="text">{{resume.basics.phone}}</span>
+        </div>
+        <div>
+            <span class="icon fa-solid fa-envelope"></span>
+            <span class="text">{{linkEmail resume.basics.email}}</span>
+        </div>
+        <div>
+            <span class="icon fa-brands fa-github"></span>
+            <span class="text">{{prettyLink resume.basics.github}}</span>
+        </div>
+    </div>
+</div>

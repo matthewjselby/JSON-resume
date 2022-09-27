@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>{{#resume.basics}}{{name}}{{/resume.basics}}</title>
+  <script src="https://kit.fontawesome.com/125976e970.js" crossorigin="anonymous"></script>
+  <style>
+    {{{css}}}
+  </style>
+</head>
+
+<body>
+    <!-- Mock page is a hidden element sized to a4 paper size, so we can know px units of desired page size (used when creating pdf) -->
+    <div id="mock-page"></div>
+    <div id="resume">
+        {{> header}}
+        {{> skills}}
+        {{> projects}}
+        {{> experience}}
+        {{> education}}
+    </div>
+</body>
+
+</html>
