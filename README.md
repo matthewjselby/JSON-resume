@@ -10,15 +10,15 @@ Inspired by projects like [jsonresume.org](https://jsonresume.org). Why is makin
 
 Clone the repository and run `npm i`. This will install the necessary dependencies.
 
-To build the website, run `npx gulp build` from the project directory. This will compile the handlebars template and output resume.html in the /dist folder. You can serve this file from your website or do anything else you can do with HTML.
+To build the website, run `npx gulp buildResume` from the project directory. This will compile the handlebars template and output resume.html in the /dist folder. You can serve this file from your website or do anything else you can do with HTML.
 
-To see the website in a browser, run `npx gulp test`. The site will update live with changes to the handlebars template, the scss file, and the json resume file.
+To see the website in a browser, run `npx gulp viewResume`. The site will update live with changes to the handlebars template, the scss file, and the json resume file.
 
-To generate a pdf of your resume, run `npx gulp generatePdf` from the project directory. The pdf will be generated in the project directory as resume.pdf by default.
+To generate a pdf of your resume, run `npx gulp resumeToPdf` from the project directory. The pdf will be generated in the project directory as resume.pdf by default.
 
 You can specify a JSON input file using the command line argument `--i /path/to/your/resume.json`. This will work with any of the commands listed above. If you do not specify an input file, the commands will use resume.json in the root of the project directory.
 
-Similarly, you can specify a PDF output file using the command line argument `--o /path/to/your/resume.pdf`. This is only applicable to the `generatePdf` command above.
+Similarly, you can specify a PDF output file using the command line argument `--o /path/to/your/resume.pdf`. This is only applicable to the `resumeToPdf` command above.
 
 # PDF Rendering
 

@@ -12,7 +12,6 @@ const sass = gulpSass(dartSass);
 import through from 'through2';
 import puppeteer from 'puppeteer';
 import minimist from 'minimist';
-import { clear } from 'console';
 
 const __dirname = path.resolve(path.dirname(''));
 const options = minimist(process.argv.slice(2), {
@@ -23,14 +22,13 @@ const options = minimist(process.argv.slice(2), {
     }
 });
 
-// Remove dist
 const clean = (done) => {
+    // Remove dist
     deleteSync(['dist', 'pdf', 'resume.pdf']);
     done();
 }
 
-const build = async () => {
-    let pathToResume = path.join(__dirname, '/resume.json')
+const buildResume = async () => {
     // Sass -> CSS
     let css = '';
     await new Promise((resolve) => {
@@ -95,7 +93,7 @@ const watch = () => {
     });
 };
 
-const generatePdf = async () => {
+const resumeToPdf = async () => {
     await build();
     let html = fs.readFileSync(path.join(__dirname, '/dist/resume.html'), 'utf-8');
     // Launch browser and populate with document
@@ -121,8 +119,7 @@ const generatePdf = async () => {
     return Promise.resolve();
 }
 
-gulp.task('build', build);
-gulp.task('serve', serve);
-gulp.task('test', gulp.series(build, gulp.parallel(serve, watch)));
+gulp.task('buildResume', buildResume);
+gulp.task('viewResume', gulp.series(buildResume, gulp.parallel(serve, watch)));
 gulp.task('clean', clean);
-gulp.task('generatePdf', generatePdf);
+gulp.task('resumeToPdf', resumeToPdf);
