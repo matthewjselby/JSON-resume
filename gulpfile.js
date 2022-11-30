@@ -11,8 +11,8 @@ import gulpSass from 'gulp-sass';
 const sass = gulpSass(dartSass);
 import through from 'through2';
 import puppeteer from 'puppeteer';
-import { PDFDocument } from 'pdf-lib';
 import minimist from 'minimist';
+import { clear } from 'console';
 
 const __dirname = path.resolve(path.dirname(''));
 const options = minimist(process.argv.slice(2), {
@@ -102,76 +102,21 @@ const generatePdf = async () => {
     let browser = await puppeteer.launch();
     let page = await browser.newPage();
     await page.setContent(html, {
-        waitUntil: 'domcontentloaded'
+        waitUntil: 'networkidle0'
     });
-    // Get page header (includes styles)
-    let pageHeader = await page.evaluate(() => {
-        return document.head.outerHTML;
-    });
-    // Parse document and separate into pages
-    let pages = await page.evaluate(() => {
-        let pages = []
-        let sections = document.querySelectorAll('.section');
-        let mockPage = document.querySelector('#mock-page');
-        let pageHeight = mockPage.clientHeight;
-        let currentHeight = 0;
-        let currentPage = document.createElement('div');
-        currentPage.className = "page";
-        pages.push(currentPage);
-        sections.forEach((section) => {
-            currentHeight += section.clientHeight;
-            if (currentHeight > pageHeight) {
-                currentHeight = section.clientHeight;
-                currentPage = document.createElement('div');
-                currentPage.className = "page";
-                pages.push(currentPage);
-            }
-            currentPage.appendChild(section);
-        });
-        let pagesHTML = []
-        pages.forEach((page) => {
-            pagesHTML.push(`<body>${page.outerHTML}</body>`);
-        });
-        return pagesHTML;
-    });
-    // Load each page into browser individually and grab PDF
-    if (!fs.existsSync(path.join(__dirname, '/pdf'))) {
-        fs.mkdirSync(path.join(__dirname, '/pdf'));
-    }
-    let i = 1;
-    for (let docPage of pages) {
-        await page.setContent(pageHeader + docPage, {
-            waitUntil: 'networkidle0'
-        });
-        await page.pdf({
-            path: `./pdf/page${i}.pdf`,
-            format: 'Letter',
-            displayHeaderFooter: false,
-            margin: {
-                left: 0,
-                bottom: 0,
-                right: 0,
-                top: 0
-            },
-            printBackground: true,
-            scale: 1.0
-        });
-        i += 1;
-    }
-    // Combine each PDF from puppeteer into a single pdf
-    let combinedPdf = await PDFDocument.create(); 
-    let pdfs = fs.readdirSync(path.join(__dirname, '/pdf'));
-    for await (let pdf of pdfs) {
-        console.log(pdf);
-        let pdfData = fs.readFileSync(path.join(__dirname, `/pdf/${pdf}`));
-        let tempPdf = await PDFDocument.load(pdfData);
-        for await (let page of await combinedPdf.copyPages(tempPdf, tempPdf.getPageIndices())) {
-            combinedPdf.addPage(page);
+    await page.pdf({
+        path: options.o,
+        preferCSSPageSize: true,
+        displayHeaderFooter: false,
+        printBackground: true,
+        scale: 1.0,
+        margin: {
+            top: 0,
+            right: 0,
+            bottom: 0,
+            right: 0
         }
-    }
-    let output = await combinedPdf.save();
-    fs.writeFileSync(options.o, output);
-    deleteSync(path.join(__dirname, '/pdf'));
+    });
     await browser.close();
     return Promise.resolve();
 }

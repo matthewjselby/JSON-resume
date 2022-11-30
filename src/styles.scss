@@ -2,6 +2,24 @@ $margin: .25 * 72pt;
 $pageWidth: 8.5 * 72pt;
 $pageHeight: 11 * 72pt;
 
+@media print {
+    .section {
+        page-break-inside: avoid;
+    }
+}
+@page {
+    margin: .25in;
+    height: 11in;
+    width: 8.5in;
+}
+
+@media screen {
+    #resume {
+        margin: 20px;
+        max-width: $pageWidth;
+    }
+}
+
 body {
     margin: 0px;
     padding: 0px;
@@ -19,24 +37,20 @@ p {
     padding: 0;
 }
 
-#resume {
-    margin: 20px auto;
-    width: $pageWidth;
-}
-
 .header {
+    margin: 0px;
     align-self: flex-start;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
-    padding-bottom: 20px;
-    border-bottom: 1px solid;
+    padding-bottom: 15px;
+    border-bottom: .5px solid;
     h1 {
         margin: 0px;
     }
     p {
         color: gray;
-        margin-top: -5px;
+        margin-top: 0px;
     }
     .vertical-divider {
         margin: 5px 20px;
@@ -45,12 +59,13 @@ p {
         background: black;
     }
     .contact-info {
+        min-width: 220px;
         margin-left: 10px;
         div:not(:first-child) {
             margin-top: 10px;
         }
         .icon {
-            font-size: 16px;
+            font-size: 18px;
             margin: 0;
             padding: 0;
             color: gray;
@@ -67,10 +82,7 @@ p {
     width: 100%;
     margin: 0;
     h2 {
-        margin: 15px 0px 10px 0px;
-    }
-    h2:not(:first-child) {
-        margin: 10px 0px;
+        margin: 8px 0px;
     }
 }
 
@@ -88,9 +100,9 @@ p {
     flex-direction: row;
     flex-wrap: wrap;
     .skill {
-        margin: 0px 0px 5px 5px;
+        margin: 0px 0px 3px 3px;
         border-radius: 1.5em;
-        padding: 5px 10px;
+        padding: 4px 10px;
         background-color: gray;
         color: white;
     }
@@ -100,9 +112,6 @@ p {
     .description {
         margin: 5px;
     }
-}
-.project:not(:first-child) {
-    margin-top: 10px;
 }
 
 .job {
@@ -138,15 +147,16 @@ p {
     visibility: hidden;
     height: $pageHeight - ($margin * 2);
     width: $pageWidth - ($margin * 2);
-    padding: $margin;
+    padding: 0px;
+    margin: $margin;
 }
 
 .page {
     background-color: white;
     height: $pageHeight - ($margin * 2);
     width: $pageWidth - ($margin * 2);
-    padding: $margin;
-    margin: 0px;
+    margin: $margin;
+    padding: 0px;
 }
 
 .section {
