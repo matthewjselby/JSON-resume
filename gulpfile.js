@@ -94,7 +94,7 @@ const watch = () => {
 };
 
 const resumeToPdf = async () => {
-    await build();
+    await buildResume();
     let html = fs.readFileSync(path.join(__dirname, '/dist/resume.html'), 'utf-8');
     // Launch browser and populate with document
     let browser = await puppeteer.launch();

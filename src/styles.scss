@@ -139,31 +139,7 @@ p {
     }
 }
 
-// Size mock-page to A4 paper size and hide offscreen (so it doesn't affect scrollbars)
-#mock-page {
-    position: absolute;
-    left: -1000px;
-    top: -1000px;
-    visibility: hidden;
-    height: $pageHeight - ($margin * 2);
-    width: $pageWidth - ($margin * 2);
-    padding: 0px;
-    margin: $margin;
-}
-
-.page {
-    background-color: white;
-    height: $pageHeight - ($margin * 2);
-    width: $pageWidth - ($margin * 2);
-    margin: $margin;
-    padding: 0px;
-}
-
 .section {
     width: 100%;
     margin: 0;
-}
-
-.page:not(:first-child) {
-    margin-top: 10pt;
 }
