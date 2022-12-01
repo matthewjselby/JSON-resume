@@ -15,10 +15,10 @@ import minimist from 'minimist';
 
 const __dirname = path.resolve(path.dirname(''));
 const options = minimist(process.argv.slice(2), {
-    string: ['i', 'o'],
+    string: ['rin', 'rout'],
     default: {
-        'i': path.join(__dirname, 'resume.json'),
-        'o': path.join(__dirname, 'resume.pdf')
+        'rin': path.join(__dirname, 'resume.json'),
+        'rout': path.join(__dirname, 'resume.pdf')
     }
 });
 
@@ -27,6 +27,10 @@ const clean = (done) => {
     deleteSync(['dist', 'pdf', 'resume.pdf']);
     done();
 }
+
+gulp.task('clean', clean);
+
+// Resume related tasks
 
 const buildResume = async () => {
     // Sass -> CSS
@@ -43,7 +47,7 @@ const buildResume = async () => {
     });
     // Handlebars -> HTML
     let template = fs.readFileSync(path.join(__dirname, '/src/resume.hbs'), 'utf-8');
-    let resume = JSON.parse(fs.readFileSync(options.i));
+    let resume = JSON.parse(fs.readFileSync(options.rin));
     let handlebars = hbsw(hbs);
     handlebars.helpers('./hbs-helpers.cjs');
     handlebars.partials(path.join(__dirname, '/src/components/') + '**/*.hbs');
@@ -59,7 +63,7 @@ const buildResume = async () => {
 };
 
 // Serve the resume on port 3000
-const serve = () => {
+const serveResume = () => {
     const app = express();
     const port = 3000;
     app.get('/', (req, res) => {
@@ -71,7 +75,7 @@ const serve = () => {
 };
 
 // Enable hot reloading
-const watch = () => {
+const watchResume = () => {
     let ports = {
         serve: 3000,
         browserSync: 4001
@@ -84,9 +88,9 @@ const watch = () => {
 
     gulp.watch([
         './src/**/*.*',
-        `${options.i}`
+        `${options.rin}`,
     ], (done) => {
-        build().then(() => {
+        buildResume().then(() => {
             browserSync.reload();
         });
         done();
@@ -103,7 +107,7 @@ const resumeToPdf = async () => {
         waitUntil: 'networkidle0'
     });
     await page.pdf({
-        path: options.o,
+        path: options.rout,
         preferCSSPageSize: true,
         displayHeaderFooter: false,
         printBackground: true,
@@ -120,6 +124,5 @@ const resumeToPdf = async () => {
 }
 
 gulp.task('buildResume', buildResume);
-gulp.task('viewResume', gulp.series(buildResume, gulp.parallel(serve, watch)));
-gulp.task('clean', clean);
+gulp.task('viewResume', gulp.series(buildResume, gulp.parallel(serveResume, watchResume)));
 gulp.task('resumeToPdf', resumeToPdf);

@@ -16,9 +16,9 @@ To see the website in a browser, run `npx gulp viewResume`. The site will update
 
 To generate a pdf of your resume, run `npx gulp resumeToPdf` from the project directory. The pdf will be generated in the project directory as resume.pdf by default.
 
-You can specify a JSON input file using the command line argument `--i /path/to/your/resume.json`. This will work with any of the commands listed above. If you do not specify an input file, the commands will use resume.json in the root of the project directory.
+You can specify a JSON input file using the command line argument `--rin /path/to/your/resume.json`. This will work with any of the commands listed above. If you do not specify an input file, the commands will use resume.json in the root of the project directory.
 
-Similarly, you can specify a PDF output file using the command line argument `--o /path/to/your/resume.pdf`. This is only applicable to the `resumeToPdf` command above.
+Similarly, you can specify a PDF output file using the command line argument `--rout /path/to/your/resume.pdf`. This is only applicable to the `resumeToPdf` command above.
 
 # PDF Rendering
 
